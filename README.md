@@ -1,14 +1,34 @@
 # Jewelry Visualizer Widget
 
-A modern, responsive jewelry stone visualizer with accurate sizing using CSS mm units and optional calibration features.
+A modern, responsive jewelry stone visualizer with accurate sizing using CSS mm units and calibration features. Ready for deployment and Wix integration.
+
+🔗 **Live Demo**: [https://sharonchen679.github.io/Jewelry-visualizer/widget/](https://sharonchen679.github.io/Jewelry-visualizer/widget/)
 
 ## Features
 
 - **Accurate Sizing**: Uses CSS mm units for real-world size representation
-- **Calibration System**: Optional credit card calibration for precise sizing
-- **Admin Interface**: Secret password system for admin access
-- **Dynamic Assets**: Loads stone data from configurable text files
+- **Interactive Calibration**: Credit card calibration system for precise sizing
+- **Admin Panel**: Secret password system with draggable admin interface
+- **Embedded Data**: Self-contained with no external file dependencies
+- **Wix Compatible**: Ready for iframe embedding in Wix websites
 - **Responsive Design**: Works on desktop and mobile devices
+- **GitHub Pages Ready**: Optimized for static hosting
+
+## Quick Start
+
+### For Wix Integration
+Add this iframe to your Wix site:
+```html
+<iframe 
+    src="https://sharonchen679.github.io/Jewelry-visualizer/widget/" 
+    width="100%" 
+    height="800px" 
+    frameborder="0">
+</iframe>
+```
+
+### For Direct Use
+Simply visit: [https://sharonchen679.github.io/Jewelry-visualizer/widget/](https://sharonchen679.github.io/Jewelry-visualizer/widget/)
 
 ## Project Structure
 
@@ -18,61 +38,81 @@ jewelry-visualizer/
 │   ├── index.html          # Main widget interface
 │   ├── style.css           # Widget styling with CSS mm units
 │   ├── script.js           # Core functionality
-│   └── config.js           # Configuration settings
+│   └── config.js           # Configuration & embedded data
 ├── admin/
-│   ├── index.html          # Admin interface (coming soon)
-│   ├── admin.js            # Admin functionality (coming soon)
-│   ├── admin.css           # Admin styling (coming soon)
-│   └── upload-handler.php  # Asset upload handler (coming soon)
-├── assets/
-│   ├── center-stones/      # Center stone images
-│   ├── side-stones/        # Side stone images
-│   ├── info/               # Stone size data files
-│   └── manifest.json       # Asset manifest (coming soon)
-└── README.md
+│   ├── admin.js            # Admin panel functionality
+│   └── admin.css           # Admin panel styling
+├── .gitignore              # Git ignore rules
+└── README.md               # This file
 ```
 
-## Setup Instructions
+## Stone Data
 
-1. **Place stone images** in the appropriate asset folders:
-   - Center stones: `assets/center-stones/`
-   - Side stones: `assets/side-stones/`
+The widget includes embedded data for these stones:
 
-2. **Configure stone data** in the info files:
-   - `assets/info/center-stones-sizes.txt`
-   - `assets/info/side-stones-sizes.txt`
+### Center Stones
+- Round (4mm width, sizes: 4-6.5mm)
+- Emerald (3.2mm width, sizes: 4.6-6.7mm)  
+- Oval (3.6mm width, sizes: 5.2-8mm)
+- Diamond cut (4.24mm width, sizes: 4-6.5mm)
+- Diamond (3.52mm width, sizes: 1.9-10mm)
+- Hexa (3mm width, sizes: 3.3-6mm)
 
-3. **Serve the files** from a web server (required for asset loading)
-
-## Stone Data Format
-
-### Center Stones (`center-stones-sizes.txt`)
-```
-title: width | heights (various sizes)
-Oval: 3.2 | 4.6, 5.3, 6.3, 6.7
-Round Brilliant: 3.0 | 4.0, 4.5, 5.0, 5.5, 6.0
-```
-
-### Side Stones (`side-stones-sizes.txt`)
-```
-title: height | widths (various sizes)
-Round: 2.1 | 4.0, 4.3, 4.7, 4.9
-Baguette: 2.5 | 3.0, 3.5, 4.0, 4.5
-```
+### Side Stones
+- Moon (4.15mm height, sizes: 4-6.4mm)
+- Hexa (3mm height, sizes: 3.3-45mm)
+- Diamond (7.13mm height, sizes: 3.52-10mm)
+- Diamond cut (7.43mm height, sizes: 2.8-6.5mm)
 
 ## Admin Access
 
 - **Default Password**: `secret`
 - **Access Method**: Click letters in "Select Center Stone" title to spell password
-- **Features**: Change password, reset calibration, manage assets
-- **Security**: Admin interface content is injected only after successful authentication
+- **Features**: 
+  - Change Password (Coming Soon)
+  - Manage Assets (Coming Soon)
+  - Draggable interface
+  - Secure session management
 
-## Calibration
+## Calibration System
 
 - **Default**: CSS mm units (1mm = 1mm on screen)
-- **Manual Calibration**: Use credit card reference for precise sizing
+- **Credit Card Reference**: Drag to match real credit card (85.6mm × 53.98mm)
 - **Precision Controls**: ±0.1mm adjustments with up/down arrows
-- **Auto-save**: Calibration settings saved per device
+- **Auto-save**: Settings persist across sessions
+- **Collapsible Panel**: Clean interface when not needed
+
+## Image Management
+
+### Current Setup
+- Placeholder image paths in `config.js`
+- Ready for Wix Media Manager integration
+
+### To Add Images
+1. Upload images to Wix Media Manager
+2. Update the `stoneImageUrls` object in `widget/config.js`:
+
+```javascript
+stoneImageUrls: {
+    "Round": "https://static.wixstatic.com/media/your-wix-url-here",
+    "Emerald": "https://static.wixstatic.com/media/your-wix-url-here",
+    // ... etc
+}
+```
+
+## Development
+
+### Local Development
+```bash
+# Clone the repository
+git clone https://github.com/sharonchen679/Jewelry-visualizer.git
+
+# Open widget/index.html in your browser
+# Or serve with a local server for full functionality
+```
+
+### Deployment
+The project is automatically deployed to GitHub Pages on push to main branch.
 
 ## Browser Compatibility
 
@@ -81,16 +121,18 @@ Baguette: 2.5 | 3.0, 3.5, 4.0, 4.5
 - Safari 12+
 - Edge 16+
 
-## Development Status
+## Technical Details
 
-**Part 1 Complete**: ✅
-- Core structure with CSS mm units
-- Calibration system with credit card reference
-- Password system foundation
-- Asset loading infrastructure
+- **No Dependencies**: Pure HTML, CSS, JavaScript
+- **No Build Process**: Ready to deploy as-is
+- **Self-Contained**: All data embedded in code
+- **Responsive**: CSS Grid and Flexbox layout
+- **Accessible**: Keyboard and screen reader friendly
 
-**Coming Next**:
-- Part 2: Complete asset management
-- Part 3: Slider display system
-- Part 4: Admin interface
-- Part 5: Mobile optimization 
+## License
+
+This project is for demonstration purposes. All rights reserved.
+
+---
+
+**Need help with integration?** Open an issue or contact the development team. 
